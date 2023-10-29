@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/threejs-react/node_modules
+/threejs-react/.pnp
+/threejs-react/.pnp.js
+
+# testing
+/threejs-react/coverage
+
+# production
+/threejs-react/build
+
+# misc
+/threejs-react/.DS_Store
+/threejs-react/.env.local
+/threejs-react/.env.development.local
+/threejs-react/.env.test.local
+/threejs-react/.env.production.local
+
+/threejs-react/npm-debug.log*
+/threejs-react/yarn-debug.log*
+/threejs-react/yarn-error.log*
