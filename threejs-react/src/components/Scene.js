@@ -63,6 +63,7 @@ export default function Scene() {
         scene.add(cube4);
         cube4.position.x = -2;
         cube4.position.y = -2;
+        cube4.position.z = -2;
 
         const matcap2 = textureLoader.load('./textures/matcap2.png')
         const cube5 = new THREE.Mesh( 
@@ -80,6 +81,7 @@ export default function Scene() {
         scene.add(cube6);
         cube6.position.x = 2;
         cube6.position.y = -2;
+        cube6.position.z = 2;
 
         const matcap4 = textureLoader.load('./textures/matcap4.png')
         const cube7 = new THREE.Mesh( 
@@ -89,6 +91,7 @@ export default function Scene() {
         scene.add(cube7);
         cube7.position.x = 2;
         cube7.position.y = 2;
+        cube7.position.z = -2;
 
         const matcap5 = textureLoader.load('./textures/matcap5.png')
         const cube8 = new THREE.Mesh( 
@@ -98,6 +101,7 @@ export default function Scene() {
         scene.add(cube8);
         cube8.position.x = -2;
         cube8.position.y = 2;
+        cube8.position.z = 2;
 
         const matcap6 = textureLoader.load('./textures/matcap6.png')
         const cube9 = new THREE.Mesh( 
@@ -129,6 +133,24 @@ export default function Scene() {
         const animateFuntion = () => {
             controls.update();
             renderer.render(scene, camera);
+            cube1.rotation.x += 0.01;
+            cube1.rotation.y += 0.01;
+            cube2.rotation.x += 0.01;
+            cube2.rotation.y += 0.01;
+            cube3.rotation.x += 0.01;
+            cube3.rotation.y += 0.01;
+            cube4.rotation.x += 0.01;
+            cube4.rotation.y += 0.01;
+            cube5.rotation.x += 0.01;
+            cube5.rotation.y += 0.01;
+            cube6.rotation.x += 0.01;
+            cube6.rotation.y += 0.01;
+            cube7.rotation.x += 0.01;
+            cube7.rotation.y += 0.01;
+            cube8.rotation.x += 0.01;
+            cube8.rotation.y += 0.01;
+            cube9.rotation.x += 0.01;
+            cube9.rotation.y += 0.01;
             requestAnimationFrame(animateFuntion);
         }
 
