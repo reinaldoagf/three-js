@@ -1,6 +1,7 @@
 import {useRef,useEffect} from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 
 export default function Scene() {
     const mountRef = useRef(null);
@@ -22,11 +23,53 @@ export default function Scene() {
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
         currentMount.appendChild(renderer.domElement);
+        //controls
         const controls = new OrbitControls(camera,renderer.domElement)
         /* controls.target = new THREE.Vector3(3,3,3); */
-        controls.enableDamping = true; 
+        /* controls.enableDamping = true;  */
+        //loader
+        const gltfLoader = new GLTFLoader();
+        gltfLoader.load('./models/microplane.glb',
+            (gltf)=> {
+                console.log("onLoad")
+                scene.add(gltf.scene)
+            },
+            ()=> {
+                console.log("onProgress")
+            },
+            (error)=> {
+                console.log("onError")
+                console.log(error)
+            }
+        );
+        /* gltfLoader.load('./models/bomba.gltf',
+            (gltf)=> {
+                console.log("onLoad")
+                scene.add(gltf.scene)
+            },
+            ()=> {
+                console.log("onProgress")
+            },
+            (error)=> {
+                console.log("onError")
+                console.log(error)
+            }
+        );
+        gltfLoader.load('./models/tuberia.gltf',
+            (gltf)=> {
+                console.log("onLoad")
+                scene.add(gltf.scene)
+            },
+            ()=> {
+                console.log("onProgress")
+            },
+            (error)=> {
+                console.log("onError")
+                console.log(error)
+            }
+        ); */
         //cube
-        const cube1 = new THREE.Mesh( 
+        /* const cube1 = new THREE.Mesh( 
             new THREE.BoxGeometry(1,1,1), 
             new THREE.MeshBasicMaterial({
                 color:"#a1d9ef",
@@ -109,7 +152,20 @@ export default function Scene() {
             new THREE.MeshMatcapMaterial({matcap: matcap6}) 
         ); 
         scene.add(cube9);
-        cube9.position.y = 2;
+        cube9.position.y = 2; */
+
+        //ligths
+        /* const light = new THREE.AmbientLight( "#fff", 1 ); // soft white light
+        scene.add( light ); */
+        const light = new THREE.PointLight( 0xff0000, 1, 100 );
+        light.position.set( 50, 50, 50 );
+        scene.add( light );
+        const alight = new THREE.AmbientLight( "#fff",2 ); // soft white light
+        alight.position.set( 3, 3, 3 );
+        scene.add( alight );
+        /* const plight = new THREE.PointLight( 0xff0000, 50, 100 );
+        plight.position.set( 2, 2, 2 );
+        scene.add( plight ); */
 
         /* //sphere 
         const sphere = new THREE.Mesh( 
@@ -131,9 +187,9 @@ export default function Scene() {
 
         animateFuntion(); */
         const animateFuntion = () => {
-            controls.update();
+            /* controls.update(); */
             renderer.render(scene, camera);
-            cube1.rotation.x += 0.01;
+            /* cube1.rotation.x += 0.01;
             cube1.rotation.y += 0.01;
             cube2.rotation.x += 0.01;
             cube2.rotation.y += 0.01;
@@ -150,7 +206,7 @@ export default function Scene() {
             cube8.rotation.x += 0.01;
             cube8.rotation.y += 0.01;
             cube9.rotation.x += 0.01;
-            cube9.rotation.y += 0.01;
+            cube9.rotation.y += 0.01; */
             requestAnimationFrame(animateFuntion);
         }
 
